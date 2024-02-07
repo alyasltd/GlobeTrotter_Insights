@@ -37,3 +37,7 @@ Cette page servira de point central pour accéder à des informations plus déta
 - **Conseils aux voyageurs** : Utilise une API ou des données gouvernementales pour fournir des conseils aux voyageurs concernant le pays sélectionné. Cela peut inclure des informations sur la sécurité, les exigences de visa, les vaccins, etc.
 - **Générateur d'itinéraire** : Offre une fonctionnalité où l'utilisateur peut sélectionner une durée de voyage (entre 2 et 14 jours) et générer un itinéraire proposé incluant des activités, des lieux à visiter, etc. 
 
+# API Utilisées 
+ mistralai/mistral-7b-instruct:free
+ https://restcountries.com/v3.1
+

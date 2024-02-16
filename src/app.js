@@ -1,7 +1,10 @@
 import express from 'express';
-import indexRoute from './routes/index.js';
-//export default app;
+import dotenv from 'dotenv';
+dotenv.config();
+import {fetchCountryDescription } from './gpt_services/gpt_ask.js'; 
 
+
+const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
 const app = express();
 
 app.use(express.json());
@@ -16,32 +19,45 @@ app.get('/', (req, res) => {
 
   app.get('/country/:language/:name', async (req, res) => {
     const { name, language } = req.params;
+
+    // Mapping des codes de langue si nécessaire
+    const languageMap = {
+      fr: 'français',
+      en: 'anglais',
+      spa: 'espagnol'
+      // Ajoutez d'autres correspondances de langues si nécessaire
+    };
+
+    const lang = languageMap[language] || 'anglais'; // Fallback à l'anglais si non trouvé
+
+
     try {
       // Fetch country information by name
       const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
       const countries = await response.json();
-  
-      // Assuming you want to find the first country that matches the requested name
+      // Assuming I want to find the first country that matches the requested name
       const country = countries.find(c => c.name.common.toLowerCase() === name.toLowerCase());
 
-      fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${APIKEY_OPENROUTER}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "model": "mistralai/mistral-7b-instruct:free", // Optional (user controls the default),
-        "messages": [
-          {"role": "user", "content": `Donne moi une description du pays {country}`},
-        ]
-      })
-      });
+
+      // fetch general informations about a country 
+      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang}`;
+      const risques_mess = `Donne moi les risques géopolitiques, les vaccins à avoir à jour pour voyager dans le pays ${country.name.common} en ${lang}`;
+      const iti_mess = `Donne moi un itinéraire de 1 semaine dans le pays ${country.name.common} en ${lang}`;
+
+      // Créer un tableau de promesses
+      const [description, risques, iti] = await Promise.all([
+        fetchCountryDescription(description_mess),
+        fetchCountryDescription(risques_mess),
+        fetchCountryDescription(iti_mess)
+        ]).then(results => results.map(result => result.choices[0].message.content))
+        .catch(error => {
+          throw new Error(`Erreur lors de la récupération des informations: ${error}`);
+        });
+      
 
       if (!country) {
         return res.status(404).send('Country not found.');
       }
-      //const description = ; 
   
       // Preparing response based on language
       let translations, currencyInfo;
@@ -60,19 +76,21 @@ app.get('/', (req, res) => {
           common_name: country.name.common,
           official_name: country.name.official,
         };
-      } else {
+      } 
+      else {
         return res.status(404).send('Language not found.');
       }
 
   
-      // Handling currencies - taking the first currency as an example
+      // Handling currencies 
       const currencyCode = Object.keys(country.currencies)[0];
       const currency = country.currencies[currencyCode];
       currencyInfo = {
         name: currency.name,
         symbol: currency.symbol
       };
-  
+
+      
       res.json({
         ...translations,
         capital: country.capital ? country.capital[0] : 'N/A',
@@ -86,13 +104,16 @@ app.get('/', (req, res) => {
         side_drive: country.car.side,
         continent: country.continents[0], // Assuming single continent
         maps: country.maps.googleMaps, 
-        description : 
+        description, 
+        risques, 
+        iti
       });
+
+
     } catch (error) {
       console.error(error);
       res.status(500).send('An error occurred while fetching country information.');
     }
   });
   
-
 export default app;

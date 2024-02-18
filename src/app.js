@@ -1,16 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-import {fetchCountryDescription } from './gpt_services/gpt_ask.js'; 
-
-
-const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
+import {fetch_ai_gpt } from './gpt_services/gpt_ask.js'; 
+import { fetchCountryDetails } from './countries_services/countries_ask.js'; 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use('/', indexRoute);
+const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
+
 
 app.get('/', (req, res) => {
     res.send('Welcome to GlobeTrotter Insights!');
@@ -20,45 +19,36 @@ app.get('/', (req, res) => {
   app.get('/country/:language/:name', async (req, res) => {
     const { name, language } = req.params;
 
-    // Mapping des codes de langue si nécessaire
     const languageMap = {
       fr: 'français',
       en: 'anglais',
       spa: 'espagnol'
-      // Ajoutez d'autres correspondances de langues si nécessaire
     };
 
     const lang = languageMap[language] || 'anglais'; // Fallback à l'anglais si non trouvé
 
-
     try {
       // Fetch country information by name
-      const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-      const countries = await response.json();
-      // Assuming I want to find the first country that matches the requested name
-      const country = countries.find(c => c.name.common.toLowerCase() === name.toLowerCase());
-
-
-      // fetch general informations about a country 
-      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang}`;
-      const risques_mess = `Donne moi les risques géopolitiques, les vaccins à avoir à jour pour voyager dans le pays ${country.name.common} en ${lang}`;
-      const iti_mess = `Donne moi un itinéraire de 1 semaine dans le pays ${country.name.common} en ${lang}`;
-
-      // Créer un tableau de promesses
-      const [description, risques, iti] = await Promise.all([
-        fetchCountryDescription(description_mess),
-        fetchCountryDescription(risques_mess),
-        fetchCountryDescription(iti_mess)
-        ]).then(results => results.map(result => result.choices[0].message.content))
-        .catch(error => {
-          throw new Error(`Erreur lors de la récupération des informations: ${error}`);
-        });
-      
+      const country = await fetchCountryDetails(name, language);
 
       if (!country) {
         return res.status(404).send('Country not found.');
       }
-  
+
+      // fetch general, risk and how to visit informations about a country 
+      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang}`;
+      const risques_mess = `Donne moi les risques géopolitiques, les vaccins à avoir à jour pour voyager dans le pays ${country.name.common} en ${lang}`;
+      const iti_mess = `Donne moi un itinéraire de 1 semaine dans le pays ${country.name.common} en ${lang}`;
+
+      const [description, risks, itinerary] = await Promise.all([
+        fetch_ai_gpt(description_mess),
+        fetch_ai_gpt(risques_mess),
+        fetch_ai_gpt(iti_mess)
+        ]).then(results => results.map(result => result.choices[0].message.content))
+        .catch(error => {
+          throw new Error(`Error when trying to fetch files : ${error}`);
+        });
+      
       // Preparing response based on language
       let translations, currencyInfo;
       if (language === "fr") {
@@ -81,7 +71,6 @@ app.get('/', (req, res) => {
         return res.status(404).send('Language not found.');
       }
 
-  
       // Handling currencies 
       const currencyCode = Object.keys(country.currencies)[0];
       const currency = country.currencies[currencyCode];
@@ -105,10 +94,9 @@ app.get('/', (req, res) => {
         continent: country.continents[0], // Assuming single continent
         maps: country.maps.googleMaps, 
         description, 
-        risques, 
-        iti
+        risks, 
+        itinerary
       });
-
 
     } catch (error) {
       console.error(error);

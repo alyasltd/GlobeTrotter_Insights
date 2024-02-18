@@ -1,4 +1,4 @@
-export async function fetchCountryDescription(mess) {
+export async function fetch_ai_gpt(mess) {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {

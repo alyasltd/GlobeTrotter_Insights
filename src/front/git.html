@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Globe Trotter Insights - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="l.png" alt="logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="countries.html">PICK A COUNTRY</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="git.html">GITHUB</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="flight-component">
+        <span>New York</span>
+        <input
+          type="range"
+          class="flight"
+          style="--val: 0"
+          value="0"
+          min="0"
+          max="100"
+          oninput="this.style='--val:'+this.value"
+          aria-label="percentage flown"
+        />
+        <span>Madrid</span>
+      </div>
+
+      <section id="git" class="div_info reveal">
+        <h1>💻 You want to know how the website works?</h1>
+        <p>
+          Here is my
+          <a
+            href="https://github.com/alyasltd/GlobeTrotter_Insights.git"
+            class="github-link"
+            >GITHUB Repo</a
+          >!
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Globe Trotter Insights. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

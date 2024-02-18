@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Globe Trotter Insights - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="l.png" alt="logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#welcome">HOME</a></li>
+          <li><a href="countries.html">PICK A COUNTRY</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="git.html">GITHUB</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="flight-component">
+        <span>New York</span>
+        <input
+          type="range"
+          class="flight"
+          style="--val: 0"
+          value="0"
+          min="0"
+          max="100"
+          oninput="this.style='--val:'+this.value"
+          aria-label="percentage flown"
+        />
+        <span>Madrid</span>
+      </div>
+      <section id="welcome" class="div_info">
+        <h1>🌍 Welcome !</h1>
+        <p>
+          Here is our immersive travel platform, where every click unveils a
+          world of adventure!
+        </p>
+      </section>
+      <section id="explore" class="div_info">
+        <h2>🔍 Explore with Ease</h2>
+        <p>
+          Embark on a journey of discovery with our intuitive search
+          functionality. Our search bar connects seamlessly to the REST
+          Countries API, offering lightning-fast suggestions as you type.
+          Instantly find your dream destination among a curated list of about
+          ten matching countries, ensuring your travel aspirations are just a
+          keystroke away.
+        </p>
+      </section>
+      <section id="language" class="div_info">
+        <h2>🗣 Language Delight</h2>
+        <p>
+          Experience the world in your language of choice! Select from English,
+          French, or Spanish to immerse yourself fully in the charm of each
+          destination. With information dynamically presented in your preferred
+          language, the joy of exploration knows no bounds.
+        </p>
+      </section>
+      <section id="discover" class="div_info">
+        <h2>🌟 Discover, Dive In, Delight</h2>
+        <p>
+          Dive deeper into the heart of your chosen country with our detailed
+          country pages. From vibrant flags fluttering against picturesque
+          backdrops to insightful descriptions that capture the essence of each
+          nation, every click uncovers a treasure trove of information. Explore
+          geographical wonders on interactive maps, uncover vital statistics
+          like population and currency, and ignite your wanderlust with
+          captivating insights into local culture.
+        </p>
+      </section>
+      <section id="Assistant" class="div_info">
+        <h2>🧳 Your Personal Travel Assistant</h2>
+        <p>
+          Elevate your travel planning with our integrated OpenRouteService API.
+          Delve into comprehensive travel advice sourced from authoritative
+          sources, ensuring your journey is not just exhilarating but also safe
+          and well-informed. Need inspiration for your itinerary? Let our
+          itinerary generator be your guide, crafting bespoke travel plans
+          tailored to your desired duration and preferences. Whether you crave
+          bustling city escapades or serene nature retreats, our itinerary
+          suggestions promise to make every moment of your trip unforgettable.
+        </p>
+      </section>
+      <section id="experience" class="div_info">
+        <h2>✈️ Experience the World, Your Way</h2>
+        <p>
+          With our platform, the world is at your fingertips. Start your
+          adventure today and let every click be a step towards unforgettable
+          memories and boundless exploration!
+        </p>
+        <div class="link-container">
+          <a href="countries.html" class="start-now-link">Start Now</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Globe Trotter Insights. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

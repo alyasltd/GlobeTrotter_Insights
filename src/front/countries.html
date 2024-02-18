@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Globe Trotter Insights - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="l.png" alt="logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="countries.html">PICK A COUNTRY</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="git.html">GITHUB</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="flight-component">
+        <span>New York</span>
+        <input
+          type="range"
+          class="flight"
+          style="--val: 0"
+          value="0"
+          min="0"
+          max="100"
+          oninput="this.style='--val:'+this.value"
+          aria-label="percentage flown"
+        />
+        <span>Madrid</span>
+      </div>
+
+      <main>
+        <div class="alphabet-index">
+          <a href="#A">A</a>
+          <a href="#B">B</a>
+          <a href="#C">C</a>
+          <!-- Continuez avec le reste des lettres -->
+          <a href="#Z">Z</a>
+        </div>
+
+        <div class="country-list">
+          <!-- Exemple de quelques pays, répétez la structure pour chaque lettre et pays -->
+          <div id="A">
+            <h2>A</h2>
+            <ul>
+              <li>Afghanistan</li>
+              <li>Albania</li>
+              <li>Algeria</li>
+              <!-- Plus de pays commençant par A -->
+            </ul>
+          </div>
+          <div id="B">
+            <h2>B</h2>
+            <ul>
+              <li>Bahamas</li>
+              <li>Bahrain</li>
+              <li>Bangladesh</li>
+              <!-- Plus de pays commençant par B -->
+            </ul>
+          </div>
+          <!-- Répétez pour chaque lettre de l'alphabet -->
+        </div>
+      </main>
+    </main>
+    <footer>
+      <p>&copy; 2024 Globe Trotter Insights. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

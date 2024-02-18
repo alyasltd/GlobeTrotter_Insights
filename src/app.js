@@ -11,9 +11,15 @@ app.use(express.urlencoded({ extended: false }));
 const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
 
 
-app.get('/', (req, res) => {
-    res.send('Welcome to GlobeTrotter Insights!');
-  });
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'self'; font-src 'https://fonts.gstatic.com'; style-src 'https://fonts.googleapis.com';");
+  next();
+});
+
+
+  app.get('/', (req, res) => {
+      res.send('Welcome to GlobeTrotter Insights!');
+    });
   
 
   app.get('/country/:language/:name', async (req, res) => {
@@ -103,5 +109,21 @@ app.get('/', (req, res) => {
       res.status(500).send('An error occurred while fetching country information.');
     }
   });
+
+
+  
+app.use(express.static('./front')); // Sert les fichiers statiques depuis le dossier 'front'
+
+app.get('/countries', async (req, res) => {
+    try {
+        const response = await fetch('https://restcountries.com/v3.1/all');
+        const countries = await response.json();
+        const countryNames = countries.map(country => country.name.common);
+        res.json(countryNames);
+    } catch (error) {
+        console.error('Error fetching countries:', error);
+        res.status(500).send('Error fetching country list');
+    }
+});
   
 export default app;

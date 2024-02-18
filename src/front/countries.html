@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Globe Trotter Insights - Home</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Add Content Security Policy header -->
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self' https://fonts.googleapis.com;">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -50,26 +52,7 @@
           <a href="#Z">Z</a>
         </div>
 
-        <div class="country-list">
-          <!-- Exemple de quelques pays, répétez la structure pour chaque lettre et pays -->
-          <div id="A">
-            <h2>A</h2>
-            <ul>
-              <li>Afghanistan</li>
-              <li>Albania</li>
-              <li>Algeria</li>
-              <!-- Plus de pays commençant par A -->
-            </ul>
-          </div>
-          <div id="B">
-            <h2>B</h2>
-            <ul>
-              <li>Bahamas</li>
-              <li>Bahrain</li>
-              <li>Bangladesh</li>
-              <!-- Plus de pays commençant par B -->
-            </ul>
-          </div>
+        <div class="country-list"></div>
           <!-- Répétez pour chaque lettre de l'alphabet -->
         </div>
       </main>
@@ -77,5 +60,7 @@
     <footer>
       <p>&copy; 2024 Globe Trotter Insights. Tous droits réservés.</p>
     </footer>
+    <script src="countries.js"></script>
+
   </body>
 </html>

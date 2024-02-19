@@ -114,7 +114,7 @@ app.use((req, res, next) => {
   
 app.use(express.static('./front')); // Sert les fichiers statiques depuis le dossier 'front'
 
-app.get('/countries', async (req, res) => {
+app.get('/api/countries', async (req, res) => {
     try {
         const response = await fetch('https://restcountries.com/v3.1/all');
         const countries = await response.json();

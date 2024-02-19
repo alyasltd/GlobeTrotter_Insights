@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/countries')
+    fetch('/api/countries')
         .then(response => response.json())
         .then(countries => {
             const listElement = document.querySelector('.country-list');

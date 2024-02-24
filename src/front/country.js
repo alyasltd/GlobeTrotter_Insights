@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  const language = 'fr'; // Langue souhaitée
-  const countryName = 'france'; // Nom du pays (ajustez selon besoin)
+  // Get the country name from the URL query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const countryName = urlParams.get('name'); // This will get the 'name' parameter
 
-  fetchCountryDetails(language, countryName);
+  // Now use the countryName to fetch and display country details
+  fetchCountryDetails('fr', countryName); // Assuming 'fr' is the desired language
 
   async function fetchCountryDetails(language, countryName) {
     try {

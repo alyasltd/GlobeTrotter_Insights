@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.textContent = country; // Mettez le nom commun du pays ici
             listItem.style.cursor = 'pointer'; // Change le curseur pour indiquer que c'est cliquable
             listItem.addEventListener('click', () => {
-                // Remplacer 'en' par la langue actuellement sélectionnée dans votre application
-                const language = 'fr'; // Vous pourriez vouloir rendre cela dynamique
-                window.location.href = `https://ominous-trout-gv7jx7r467rfv477-3001.app.github.dev/api/country/${language}/${country}`; // Redirige vers la route détaillée
+                const language = 'fr'; // Or dynamically set the language
+                // This redirects to the country.html page with the country name as a query parameter
+                window.location.href = `country.html?name=${country}`;
             });
             listElement.appendChild(listItem);
         });

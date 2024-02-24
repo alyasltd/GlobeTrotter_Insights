@@ -666,6 +666,7 @@ input.flight {
   flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
   padding: 20px 0; /* Ajoute un peu d'espace au-dessus et en dessous de la liste */
   list-style: none; /* Enlève les puces de la liste */
+  gap: 10px; /* Ajoute un espacement uniforme entre les éléments */
 }
 
 .alphabet-index a {
@@ -677,6 +678,8 @@ input.flight {
   border-radius: 5px; /* Bordures arrondies pour les liens */
   padding: 5px 10px; /* Espacement interne pour les liens */
   transition: background-color 0.3s, color 0.3s; /* Transition douce pour les interactions */
+  margin: 5px; /* Réduit l'espacement autour de chaque lien pour permettre un meilleur contrôle via 'gap' */
+  padding: 5px 10px;
 }
 
 .alphabet-index a:hover,
@@ -691,6 +694,7 @@ input.flight {
   flex-direction: column;
   align-items: center; /* Centre les éléments verticalement */
   width: 100%; /* Utilise toute la largeur disponible */
+  margin-bottom: 15px;
 }
 
 .country-list > div {
@@ -704,4 +708,140 @@ input.flight {
 
 .country-list li {
   margin: 5px 0; /* Ajoute un peu d'espace entre chaque pays */
+}
+
+.country-list, .country-list li {
+  list-style-type: none; /* Enlève les puces de la liste */
+}
+
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.wrapper video {
+  width: 100%;
+  height: 170px; /* Ajustez selon le besoin */
+  object-fit: cover; /* Assure que la vidéo couvre la zone sans dépasser */
+}
+
+/* Ajustements pour les écrans plus petits */
+@media (max-width: 700px) {
+  .wrapper video {
+    height: 80px; /* Augmente la hauteur sur les petits écrans */
+  }
+}
+
+.wrapper svg {
+  position: absolute;
+  top: 0; /* Ajustez si nécessaire */
+  left: 0;
+  width: 100%;
+  height: auto; /* Ajustez ou retirez selon le besoin */
+}
+
+
+.wrapper svg text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-anchor: middle; /* Centre le texte horizontalement */
+  text-transform: uppercase;
+}
+
+.wrapper svg > rect {
+  -webkit-mask: url(#mask);
+  mask: url(#mask);
+  fill: #fff;
+}
+
+
+/* Country Page Layout Adjustments */
+.main-country {
+  max-width: 1200px; /* Adjust the max-width as needed */
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+#country-name {
+  font-size: 3rem;
+  color: var(--rich-black);
+  margin-right: 10px; /* Add space between title and flag */
+}
+
+.country-header {
+  display: flex;
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#country-name {
+  font-size: 3rem;
+  color: var(--rich-black);
+  margin-right: 400px; /* Adjust space between title and flag */
+  margin-left: 100px; /* Adjust space between title and flag */
+}
+
+.country-flag-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#country-flag {
+  width: 250px; /* Ajustez cette valeur pour la taille du drapeau */
+  height: auto;
+  border-radius: 5px; /* Bordures arrondies */
+  display: block; /* Assurez que l'image est traitée comme un bloc pour appliquer des marges */
+  margin-right: 100px; /* Centre le drapeau horizontalement si nécessaire */
+}
+
+
+.country-info, .div_info {
+  margin-top: 20px;
+  width: 100%; /* Use full width */
+  padding: 20px;
+  background-color: var(--baby-powder-2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#map {
+  height: 250px; /* Adjust map height */
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .country-header {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0; /* Reset the margin for mobile */
+  }
+
+  #country-name {
+    margin-bottom: 10px; /* Adjusted space between title and flag on mobile */
+    font-size: 2rem; /* Adjust the font size for mobile */
+    text-align: center; /* Center the title on mobile */
+  }
+
+  #country-flag {
+    width: 120px; /* Adjust the flag size for mobile */
+    margin: 0 auto; /* Center the flag below the country name */
+    border-radius: 5px; /* Ensuring border-radius is applied */
+  }
+
+  .country-info, .div_info {
+    padding: 15px; /* Adjust padding for mobile */
+    margin-top: 10px; /* Adjust top margin for mobile */
+  }
+
+  #map {
+    height: 200px; /* Adjust map height for mobile */
+    width: 100%; /* Ensure the map uses full width on mobile */
+  }
 }

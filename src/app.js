@@ -11,18 +11,25 @@ app.use(express.urlencoded({ extended: false }));
 const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
 
 
+app.use(express.static('./front')); // Sert les fichiers statiques depuis le dossier 'front'
+
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', "default-src 'self'; font-src 'https://fonts.gstatic.com'; style-src 'https://fonts.googleapis.com';");
+
+  res.setHeader(`Access-Control-Allow-Origin`, `*`);
+  res.setHeader(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+  res.setHeader(`Access-Control-Allow-Headers`, `Content-Type`);
+  
   next();
 });
 
 
-  app.get('/', (req, res) => {
+  app.get('/api', (req, res) => {
       res.send('Welcome to GlobeTrotter Insights!');
     });
   
 
-  app.get('/country/:language/:name', async (req, res) => {
+  app.get('/api/country/:language/:name', async (req, res) => {
     const { name, language } = req.params;
 
     const languageMap = {
@@ -42,9 +49,10 @@ app.use((req, res, next) => {
       }
 
       // fetch general, risk and how to visit informations about a country 
-      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang}`;
+      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang} comme si on était dans un site web de voyage`;
       const risques_mess = `Donne moi les risques géopolitiques, les vaccins à avoir à jour pour voyager dans le pays ${country.name.common} en ${lang}`;
-      const iti_mess = `Donne moi un itinéraire de 1 semaine dans le pays ${country.name.common} en ${lang}`;
+      const iti_mess = `Donne moi un itinéraire de 1 semaine assez développé et sous forme de tirets comme si c'était écrit dans un site web de 
+      voyage dans le pays ${country.name.common} en ${lang}, fourni moi directement l'itinéraire pour que je puisse l'afficher dans mon site web`;
 
       const [description, risks, itinerary] = await Promise.all([
         fetch_ai_gpt(description_mess),
@@ -98,7 +106,9 @@ app.use((req, res, next) => {
         area: country.area,
         side_drive: country.car.side,
         continent: country.continents[0], // Assuming single continent
-        maps: country.maps.googleMaps, 
+        maps: country.maps.openStreetMaps, 
+        lat:country.latlng[0],
+        long:country.latlng[1],
         description, 
         risks, 
         itinerary
@@ -110,9 +120,6 @@ app.use((req, res, next) => {
     }
   });
 
-
-  
-app.use(express.static('./front')); // Sert les fichiers statiques depuis le dossier 'front'
 
 app.get('/api/countries', async (req, res) => {
     try {

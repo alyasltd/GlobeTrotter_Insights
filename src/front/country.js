@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  
   const language = 'fr'; // Langue souhaitée
   const countryName = 'france'; // Nom du pays (ajustez selon besoin)
 
@@ -38,9 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inserting tourist guide information
     document.getElementById('tourist-guide').innerHTML += `
-      <p>Risks: ${data.risks}</p>
-      <p>Itinerary: ${data.itinerary.replace(/\n/g, '<br>')}</p>
+    <div>
+      <h3 class="h3-theme">Les Risques Politiques et Médicaux </h3>
+      <p>${data.risks}</p>
+    </div>
+    <div>
+      <h3 class="h3-theme">Votre Itinéraire </h3>
+      <p style= "text-align: center;">${data.itinerary.replace(/\n/g, '<br>')}</p>
+    </div>
     `;
+
 
     // Initialize the map
     initMap(data.lat, data.long);

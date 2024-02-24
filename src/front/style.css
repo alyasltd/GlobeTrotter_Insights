@@ -771,6 +771,10 @@ input.flight {
   margin-right: 10px; /* Add space between title and flag */
 }
 
+#country-description {
+  margin-bottom: 20px;
+}
+
 .country-header {
   display: flex;
   justify-content: flex-start; /* Align items to the start */
@@ -836,7 +840,7 @@ input.flight {
   }
 
   .country-info, .div_info {
-    padding: 15px; /* Adjust padding for mobile */
+    padding: 10px; /* Adjust padding for mobile */
     margin-top: 10px; /* Adjust top margin for mobile */
   }
 
@@ -844,4 +848,15 @@ input.flight {
     height: 200px; /* Adjust map height for mobile */
     width: 100%; /* Ensure the map uses full width on mobile */
   }
+}
+
+.h3-theme {
+  font-family: 'Poppins', sans-serif; /* Assuming you're using Poppins for your site */
+  color: var(--gunmetal); /* Color variable from your :root */
+  font-size: 1.2rem; /* Adjust the size as needed */
+  font-weight: 600; /* Makes it slightly bolder than normal text */
+  margin-bottom: 15px; /* Adds some space below the h3 element */
+  padding: 10px 0; /* Adds padding for top and bottom for more space */
+  border-bottom: 2px solid var(--gunmetal); /* Adds a bottom border for emphasis */
+  text-align: center; /* Centers the text */
 }

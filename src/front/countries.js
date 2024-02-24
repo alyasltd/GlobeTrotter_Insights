@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.addEventListener('click', () => {
                 // Remplacer 'en' par la langue actuellement sélectionnée dans votre application
                 const language = 'fr'; // Vous pourriez vouloir rendre cela dynamique
-                window.location.href = `https://ominous-trout-gv7jx7r467rfv477-3000.app.github.dev/api/country/${language}/${country}`; // Redirige vers la route détaillée
+                window.location.href = `https://ominous-trout-gv7jx7r467rfv477-3001.app.github.dev/api/country/${language}/${country}`; // Redirige vers la route détaillée
             });
             listElement.appendChild(listItem);
         });

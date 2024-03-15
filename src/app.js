@@ -1,8 +1,10 @@
+import * as url from 'url';
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import {fetch_ai_gpt } from './gpt_services/gpt_ask.js'; 
-import { fetchCountryDetails } from './countries_services/countries_ask.js'; 
+import {fetchCountryDetails} from './countries_services/countries_ask.js'; 
 const app = express();
 
 app.use(express.json());
@@ -10,18 +12,19 @@ app.use(express.urlencoded({ extended: false }));
 
 const APIKEY_OPENROUTER = process.env.APIKEY_OPENROUTER;
 
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-app.use(express.static('./front')); // Sert les fichiers statiques depuis le dossier 'front'
+app.use(express.static(path.join(__dirname, 'front'))); // Sert les fichiers statiques depuis le dossier 'front'
 
-app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self'; font-src 'https://fonts.gstatic.com'; style-src 'https://fonts.googleapis.com';");
+// app.use((req, res, next) => {
+//   res.setHeader('Content-Security-Policy', "default-src 'self'; font-src 'https://fonts.gstatic.com'; style-src 'https://fonts.googleapis.com';");
 
-  res.setHeader(`Access-Control-Allow-Origin`, `*`);
-  res.setHeader(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-  res.setHeader(`Access-Control-Allow-Headers`, `Content-Type`);
+//   res.setHeader(`Access-Control-Allow-Origin`, `*`);
+//   res.setHeader(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+//   res.setHeader(`Access-Control-Allow-Headers`, `Content-Type`);
   
-  next();
-});
+//   next();
+// });
 
 
   app.get('/api', (req, res) => {

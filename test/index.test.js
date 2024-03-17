@@ -5,7 +5,7 @@ import app from '../src/app.js';
 
 // Importez les dépendances nécessaires pour les tests
 import supertest from 'supertest';
-import app from './app'; // Assurez-vous que le chemin est correct
+import app from '../app'; // Assurez-vous que le chemin est correct
 
 const request = supertest(app);
 

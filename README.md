@@ -33,13 +33,10 @@ GlobeTrotter Insights est une application web fournissant des informations sur l
     - Pour l'API REST Countries, consultez [REST Countries API](https://restcountries.com/v3.1).
 
 2. **Configuration** :
-    - Une fois que vous avez obtenu vos clés d'API, créez un fichier de configuration nommé `config.json` à la racine du projet avec les clés d'API nécessaires.
+    - Une fois que vous avez obtenu votre clés d'API, allez dans le fichier de configuration nommé `.env` à la racine du projet.
     - Voici un exemple de structure de `config.json` :
-        ```json
-        {
-            "openrouter_api_key": "VOTRE_CLÉ_OPENROUTER_IA",
-            "restcountries_api_key": "VOTRE_CLÉ_REST_COUNTRIES"
-        }
+        ```
+        APIKEY_OPENROUTER= XXXXXXXX
         ```
 
 3. **Installation et Exécution** :

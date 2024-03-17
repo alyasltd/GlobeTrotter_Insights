@@ -17,7 +17,8 @@ export async function fetch_ai_gpt(mess) {
 
     // Vérification si la réponse du serveur est ok
     if (!response.ok) {
-        throw new Error('Network response was not ok');
+        console.log(response)
+        throw new Error('Network response was not ok'+response.status+response.statusText);
     }
 
     // Analyse de la réponse JSON

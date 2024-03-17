@@ -10,7 +10,7 @@ export const fetch_single_country = async (req, res) => {
       spa: 'espagnol'
     }; 
 
-    const lang = languageMap[language] || 'anglais'; // Fallback à l'anglais si non trouvé
+    const lang = languageMap[language] || 'en'; // Fallback à l'anglais si non trouvé
 
     try {
       // Fetch country information by name
@@ -33,6 +33,7 @@ export const fetch_single_country = async (req, res) => {
         fetch_ai_gpt(iti_mess)
         ]).then(results => results.map(result => result.choices[0].message.content))
         .catch(error => {
+          console.error(error)
           throw new Error(`Error when trying to fetch files : ${error}`);
         });
       

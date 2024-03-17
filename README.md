@@ -54,6 +54,6 @@ GlobeTrotter Insights est une application web fournissant des informations sur l
 Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
 
 # API Utilisées 
- mistralai/mistral-7b-instruct:free
- https://restcountries.com/v3.1
+- https://openrouter.ai/models/openai/gpt-3.5-turbo-0301
+- https://restcountries.com/v3.1
 

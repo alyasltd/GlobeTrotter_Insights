@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.addEventListener('click', () => {
                 const language = 'fr'; // Or dynamically set the language
                 // This redirects to the country.html page with the country name as a query parameter
-                window.location.href = `country.html?name=${country}`;
+                window.location.href = `country.html?name=${country}&lang=${language}`;
             });
             listElement.appendChild(listItem);
         });

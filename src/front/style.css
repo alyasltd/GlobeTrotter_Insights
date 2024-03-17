@@ -68,6 +68,18 @@ nav ul li a:hover {
   color: var(--gunmetal); /* Couleur du texte au survol */
 }
 
+nav ul li a img {
+  width: 30px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 15%; /* Rounded borders */
+  border: 2px solid transparent; /* Add border */
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+nav ul li a img:hover {
+  border-color: #ccc; /* Change border color on hover */
+}
+
 .hero {
   background-color: var(--cerulean);
   color: var(--white);
@@ -800,6 +812,7 @@ input.flight {
 #country-flag {
   width: 250px; /* Ajustez cette valeur pour la taille du drapeau */
   height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile pour du relief */
   border-radius: 5px; /* Bordures arrondies */
   display: block; /* Assurez que l'image est traitée comme un bloc pour appliquer des marges */
   margin-right: 100px; /* Centre le drapeau horizontalement si nécessaire */

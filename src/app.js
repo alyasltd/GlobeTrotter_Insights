@@ -3,6 +3,7 @@ import * as url from 'url'; // Module pour travailler avec les URLs
 import path from 'path'; // Module pour travailler avec les chemins de fichiers
 import express from 'express'; // Framework web pour Node.js
 import dotenv from 'dotenv'; // Module pour charger des variables d'environnement à partir d'un fichier .env
+
 dotenv.config(); // Chargement des variables d'environnement
 
 // Import des routes définies dans d'autres fichiers
@@ -23,10 +24,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 // Middleware pour servir les fichiers statiques depuis le dossier 'front'
 app.use(express.static(path.join(__dirname, 'front')));
 
-
 // Définition des routes avec les fonctions à exécuter pour chaque route
-app.get('/api/country/:language/:name', fetch_single_country);
-app.get('/api/countries', fetch_list_countries);
-  
+app.get('/api/country/:language/:name', fetch_single_country); // Route pour récupérer les détails d'un pays
+app.get('/api/countries', fetch_list_countries); // Route pour récupérer la liste des pays
+
 // Export de l'application Express
-export default app;
+export default app; 

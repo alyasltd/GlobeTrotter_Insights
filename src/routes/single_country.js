@@ -8,7 +8,7 @@ export const fetch_single_country = async (req, res) => {
       fr: 'français',
       en: 'anglais',
       spa: 'espagnol'
-    };
+    }; 
 
     const lang = languageMap[language] || 'anglais'; // Fallback à l'anglais si non trouvé
 

@@ -80,6 +80,12 @@ nav ul li a img:hover {
   border-color: #ccc; /* Change border color on hover */
 }
 
+#uk-flag {
+  width: 35px; /* Ajustez cette valeur pour agrandir l'image */
+  height: 22px; /* Gardez 'auto' pour maintenir le ratio d'aspect */
+}
+
+
 .hero {
   background-color: var(--cerulean);
   color: var(--white);

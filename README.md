@@ -1,4 +1,4 @@
-# README - GlobeTrotter Insights 🌍✈️
+# GlobeTrotter Insights 🌍✈️
 
 GlobeTrotter Insights est une application web fournissant des informations sur les pays du monde, s'appuyant sur les API REST Countries et Open Router IA GPT 3.5. Elle offre des données culturelles, historiques et géographiques, parfaites pour les voyageurs et les curieux.
 
@@ -51,7 +51,6 @@ GlobeTrotter Insights est une application web fournissant des informations sur l
         ```
 
 ## Remarques
-
 Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
 
 # API Utilisées 

@@ -1,43 +1,59 @@
-# Home Page and Country Search
+# GlobeTrotter Insights 🌍✈️
 
-## Search Functionality:
-- **Implement a search bar** that interacts with the REST Countries API to suggest a list of countries based on the user's input. If possible, display about ten matching countries in real-time for the user to choose from.
-- **Language selection**: Offer the option to select one of three languages (English, French, Spanish) to display the information. This could be achieved by storing information in different languages and changing the display based on the user's selection.
+GlobeTrotter Insights est une application web fournissant des informations sur les pays du monde, s'appuyant sur les API REST Countries et Open Router IA GPT 3.5. Elle offre des données culturelles, historiques et géographiques, parfaites pour les voyageurs et les curieux.
 
-## Country Details Page
+## Fonctionnalités de l'API et du site web :
 
-**Information display**: Once a country is selected, display a details page that includes:
-    The country's flag and a brief description.
-    A map showing the geographical location of the country.
-    The FIFA abbreviation, the official and common name, population, capital, and currency.
-This page will serve as a central point to access more detailed and specific information about the country.
+### Page d'Accueil et Recherche de Pays
 
-## Integration with OpenRouteService API (or similar) for Travel Advice and Itineraries
+#### Fonctionnalité de recherche :
+- Implémente une possibilité de filtrer les pays recherchés en sélectionnant la première lettre. Cette liste de pays est issue de l'API REST Countries pour proposer une liste de pays basée sur la sélection de l'utilisateur. 
+- Sélection de la langue : Offre la possibilité de sélectionner l'une des trois langues (Anglais, Français, Espagnol) **après la sélection d'un pays** afin d'afficher les informations traduite pour un pays. Les informations sont stockées dans différentes langues et l'affichage change en fonction de la sélection de l'utilisateur.
 
-- **Travel advice**: Use an API or governmental data to provide travel advice regarding the selected country. This can include information on safety, visa requirements, vaccinations, etc.
-- **Itinerary generator**: Offer a feature where the user can select a travel duration (between 2 and 14 days) and generate a proposed itinerary including activities, places to visit, etc.
+### Page des Détails du Pays
 
------------------------------------------------------------------------------------
-# Page d'Accueil et Recherche de Pays
+#### Affichage des informations :
+- Une fois un pays sélectionné, affiche une page de détails incluant :
+    - Le nom et le drapeau du pays (REST COUNTRIES API)
+    - Une brève description (générée par GPT 3.5)
+    - Des informations diversies : le nom officiel, la capitale, la population, la devise, la place du conducteur, le continent, l'indice de Gini (2018), la surface etc.
+    - Une carte montrant l'emplacement géographique du pays.
+- Cette page sert de point central pour accéder à des informations plus détaillées et spécifiques sur le pays.
 
-## Fonctionnalité de recherche : 
-- **Implémente une barre de recherche** qui interagit avec l'API REST Countries pour proposer une liste de pays basée sur la saisie de l'utilisateur. Si possible, affiche une dizaine de pays correspondants en temps réel pour que l'utilisateur puisse choisir.
-- **Sélection de la langue** : Offre la possibilité de sélectionner l'une des trois langues (Anglais, Français, Espagnol) pour afficher les informations. Cela pourrait être réalisé en stockant les informations dans différentes langues et en changeant l'affichage en fonction de la sélection de l'utilisateur.
+### Intégration avec l'API OpenRouter IA GPT 3.5 pour Conseils de Voyage et Itinéraires
 
-## Page des Détails du Pays
+- Conseils aux voyageurs : permet de fournir des conseils aux voyageurs concernant le pays sélectionné. Cela peut inclure des informations sur la sécurité, les exigences de visa, les vaccins, etc.
+- Générateur d'itinéraire : Offre une fonctionnalité où l'utilisateur peut sélectionner une durée de voyage (entre 2 et 14 jours) et générer un itinéraire proposé incluant des activités, des lieux à visiter, etc.
 
-**Affichage des informations** : Une fois un pays sélectionné, affiche une page de détails qui inclut :
-    Le drapeau du pays et une brève description.
-    Une carte montrant l'emplacement géographique du pays.
-    L'abréviation FIFA, le nom officiel et commun, la population, la capitale, et la devise.
-Cette page servira de point central pour accéder à des informations plus détaillées et spécifiques sur le pays.
+## Configuration et Exécution
 
-## Intégration avec API OpenRouter IA (ou similaire) pour Conseils de Voyage et Itinéraires
+1. **Clés d'API** :
+    - Pour exécuter l'application, vous aurez besoin d'une d'API pour l'API OpenRouter IA.
+    - Rendez-vous sur [OpenRouter IA](https://openrouter.ai/models/openai/gpt-3.5-turbo-0301) pour obtenir une clé d'API.
+    - Pour l'API REST Countries, consultez [REST Countries API](https://restcountries.com/v3.1).
 
-- **Conseils aux voyageurs** : Utilise une API ou des données gouvernementales pour fournir des conseils aux voyageurs concernant le pays sélectionné. Cela peut inclure des informations sur la sécurité, les exigences de visa, les vaccins, etc.
-- **Générateur d'itinéraire** : Offre une fonctionnalité où l'utilisateur peut sélectionner une durée de voyage (entre 2 et 14 jours) et générer un itinéraire proposé incluant des activités, des lieux à visiter, etc. 
+2. **Configuration** :
+    - Une fois que vous avez obtenu votre clés d'API, allez dans le fichier de configuration nommé `.env` à la racine du projet.
+    - Voici un exemple de structure de `.env` :
+        ```
+        APIKEY_OPENROUTER= XXXXXXXX
+        ```
+
+3. **Exécution** :
+    - Assurez-vous d'avoir Node.js installé sur votre système.
+    - Clonez ce dépôt et accédez au répertoire du projet.
+    - Exécutez `npm install` pour installer les dépendances.
+    - Lancez l'application avec `npm start`.
+  OU
+    - Directement sur codespaces, il faut écrire la commande :
+        ```
+        npm run dev
+        ```
+
+## Remarques
+Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
 
 # API Utilisées 
- mistralai/mistral-7b-instruct:free
- https://restcountries.com/v3.1
+- https://openrouter.ai/models/openai/gpt-3.5-turbo-0301
+- https://restcountries.com/v3.1
 

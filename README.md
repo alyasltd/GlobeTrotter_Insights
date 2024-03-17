@@ -1,4 +1,4 @@
-# README - GlobeTrotter Insights
+# README - GlobeTrotter Insights 🌍✈️
 
 GlobeTrotter Insights est une application web fournissant des informations sur les pays du monde, s'appuyant sur les API REST Countries et Open Router IA GPT 3.5. Elle offre des données culturelles, historiques et géographiques, parfaites pour les voyageurs et les curieux.
 
@@ -34,25 +34,26 @@ GlobeTrotter Insights est une application web fournissant des informations sur l
 
 2. **Configuration** :
     - Une fois que vous avez obtenu votre clés d'API, allez dans le fichier de configuration nommé `.env` à la racine du projet.
-    - Voici un exemple de structure de `config.json` :
+    - Voici un exemple de structure de `.env` :
         ```
         APIKEY_OPENROUTER= XXXXXXXX
         ```
 
-3. **Installation et Exécution** :
+3. **Exécution** :
     - Assurez-vous d'avoir Node.js installé sur votre système.
     - Clonez ce dépôt et accédez au répertoire du projet.
     - Exécutez `npm install` pour installer les dépendances.
     - Lancez l'application avec `npm start`.
+  OU
+    - Directement sur codespaces, il faut écrire la commande :
+        ```
+        npm run dev
+        ```
 
 ## Remarques
 
-- Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
-- Pour toute question ou problème, veuillez contacter l'équipe de développement à [contact@globetrotterinsights.com](mailto:contact@globetrotterinsights.com).
+Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
 
----
-
-Gardez ce document README à jour avec toutes les modifications apportées à l'application et aux API utilisées. Bonne exploration avec GlobeTrotter Insights ! 🌍✈️
 # API Utilisées 
  mistralai/mistral-7b-instruct:free
  https://restcountries.com/v3.1

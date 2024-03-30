@@ -51,7 +51,7 @@ GlobeTrotter Insights est une application web fournissant des informations sur l
         ```
 
 ## Remarques
-Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données.
+Assurez-vous d'avoir une connexion Internet active lors de l'utilisation de l'application, car elle dépend des API externes pour récupérer les données. De plus, la clé d'API GPT peut ne plus contenir de crédit, si une erreur anormale apparait, il faut donc changer la clé. 
 
 # API Utilisées 
 - https://openrouter.ai/models/openai/gpt-3.5-turbo-0301

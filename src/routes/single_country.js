@@ -21,11 +21,11 @@ export const fetch_single_country = async (req, res) => {
       }
 
       // fetch general, risk and how to visit informations about a country 
-      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang} comme si on était dans un site web de voyage`;
+      const description_mess = `Donne moi une description du pays ${country.name.common} en ${lang} inspire toi de wikipédia en ${lang}`;
       const risques_mess = `Donne moi les risques géopolitiques, les vaccins à avoir à jour pour voyager dans le pays ${country.name.common} en ${lang}`;
       const iti_mess = `Donne moi un itinéraire de 1 semaine assez développé et sous forme de tirets comme si c'était écrit dans un site web de 
       voyage dans le pays ${country.name.common} en ${lang}, fourni moi directement l'itinéraire en commençant par Jour 1
-      pour que je puisse l'afficher dans mon site web`;
+      pour que je puisse l'afficher directement (en ${lang})`;
 
       const [description, risks, itinerary] = await Promise.all([
         fetch_ai_gpt(description_mess),

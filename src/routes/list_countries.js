@@ -1,7 +1,3 @@
-// Importation des fonctions nécessaires depuis les fichiers correspondants
-import { fetch_ai_gpt } from '../gpt_services/gpt_ask.js'; // Fonction pour interagir avec l'API OpenRouter AI
-import { fetchCountryDetails } from '../countries_services/countries_ask.js'; // Fonction pour récupérer les détails d'un pays
-
 // Fonction pour récupérer la liste des pays
 export const fetch_list_countries = async (req, res) => {
     try {

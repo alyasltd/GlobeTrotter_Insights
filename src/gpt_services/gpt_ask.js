@@ -8,7 +8,7 @@ export async function fetch_ai_gpt(mess) {
             "Content-Type": "application/json" // Spécification du type de contenu JSON
         },
         body: JSON.stringify({
-            "model": "openai/gpt-3.5-turbo-0125", // Modèle GPT-3.5 utilisé pour la génération de texte
+            "model": "openchat/openchat-7b:free", // Modèle GPT-3.5 utilisé pour la génération de texte
             "messages": [
                 {"role": "user", "content": mess} // Message utilisateur à envoyer pour obtenir une réponse
             ]

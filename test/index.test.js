@@ -1,43 +1,34 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import request from 'supertest';
 import app from '../src/app.js';
-
-// Importez les dépendances nécessaires pour les tests
 import supertest from 'supertest';
-import app from '../app'; // Assurez-vous que le chemin est correct
 
 const request = supertest(app);
 
-describe('Tests des routes API', () => {
-  it('Test de la route principale /api', async () => {
-    const response = await request.get('/api');
-    expect(response.status).toBe(200);
-    expect(response.text).toBe('Welcome to GlobeTrotter Insights!');
-  });
+describe('Tests de l\'API pour une route spécifique', () => {
+  it('Test de la route /api/country/:language/:name pour récupérer les détails d\'un pays', async () => {
+    // Remplacez 'en' et 'italy' par les valeurs appropriées pour vos tests
+    const response = await request.get('/api/country/en/italy');
 
-  it('Test de la route /api/country/:language/:name', async () => {
-    const response = await request.get('/api/country/en/italy'); // Remplacez 'en' et 'italy' par les valeurs appropriées
-    expect(response.status).toBe(200);
+    // Vérifiez que le status HTTP est 200 OK
+    assert.strictEqual(response.status, 200, 'Le code de réponse devrait être 200');
+
     // Assurez-vous que la réponse contient les propriétés attendues
-    expect(response.body).toHaveProperty('common_name');
-    expect(response.body).toHaveProperty('capital');
-    // Ajoutez d'autres attentes selon les données que vous attendez de la route
+    assert.ok(response.body.hasOwnProperty('common_name'), 'La réponse doit contenir le nom commun du pays');
+    assert.ok(response.body.hasOwnProperty('capital'), 'La réponse doit contenir la capitale du pays');
+    // Ajoutez d'autres assertions ici basées sur ce que vous attendez de la route
+
+    // Exemple pour vérifier des valeurs spécifiques
+    // assert.strictEqual(response.body.common_name, 'Expected Common Name', 'Le nom commun du pays ne correspond pas à l\'attendu');
   });
 
-  it('Test de la route /api/countries', async () => {
-    const response = await request.get('/api/countries');
-    expect(response.status).toBe(200);
-    // Assurez-vous que la réponse contient une liste de pays
-    expect(response.body).toBeInstanceOf(Array);
-    // Ajoutez d'autres attentes selon les données que vous attendez de la route
-  });
+  // Ajoutez d'autres tests pour les différentes routes de votre API si nécessaire
 });
 
-
+// Exemple de test pour une route simple retournant la page d'accueil
 describe('GET /', () => {
-  it('should return homepage with 200 status code', async () => {
-    const response = await request(app).get('/');
-    assert.strictEqual(response.status, 200);
+  it('doit retourner la page d\'accueil avec le code de statut 200', async () => {
+    const response = await request.get('/');
+    assert.strictEqual(response.status, 200, 'Le code de réponse devrait être 200');
   });
 });

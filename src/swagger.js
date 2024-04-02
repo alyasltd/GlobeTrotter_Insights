@@ -14,13 +14,13 @@ const swaggerDocument = {
         }
       ],
       "paths": {
-        "/country/{language}/{name}": {
+        "/api/country/{lang}/{name}": {
           "get": {
             "summary": "Fetch Single Country Details",
             "description": "Retrieves detailed information for a specific country, including a description, geopolitical risks, recommended vaccines, and a detailed one-week itinerary. The content is generated in the selected language (English, French, or Spanish) and includes cultural, historical, and geographical data.",
             "parameters": [
               {
-                "name": "language",
+                "name": "lang",
                 "in": "path",
                 "required": true,
                 "description": "Language code for the response data (en for English, fr for French, spa for Spanish).",
@@ -61,7 +61,7 @@ const swaggerDocument = {
             }
           }
         },
-        "/countries": {
+        "/api/countries": {
           "get": {
             "summary": "List All Countries",
             "description": "Provides a list of all countries. This endpoint fetches the complete list of countries from the REST Countries API and returns an array of their common names.",

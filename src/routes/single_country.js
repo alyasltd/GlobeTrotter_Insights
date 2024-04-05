@@ -4,6 +4,7 @@ import {fetchCountryDetails} from '../countries_services/countries_ask.js';
 export const fetch_single_country = async (req, res) => {
     const { name, language } = req.params;
 
+    // our 3 languages 
     const languageMap = {
       fr: 'français',
       en: 'anglais',
@@ -68,7 +69,7 @@ export const fetch_single_country = async (req, res) => {
         symbol: currency.symbol
       };
 
-      
+      // response
       res.json({
         ...translations,
         capital: country.capital ? country.capital[0] : 'N/A',

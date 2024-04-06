@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchCountryDetails(language, countryName);
 
   // Met à jour les liens des drapeaux pour refléter la langue et le nom du pays actuels
-  const baseURL = 'https://ominous-trout-gv7jx7r467rfv477-3000.app.github.dev/country.html';
+  const baseURL = '/country.html';
   const flagLinks = document.querySelectorAll('nav ul li a');
   flagLinks.forEach(link => {
       if (link.querySelector('img[src*="images/french.png"], img[src*="images/uk.png"], img[src*="images/Spain.png"]')) {

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let countries = [];
 
     // Récupère la liste des pays depuis l'API
-    fetch('https://ominous-trout-gv7jx7r467rfv477-3000.app.github.dev/api/countries')
+    fetch('/api/countries')
         .then(response => response.json())
         .then(data => {
             countries = data.sort(); // Trie les pays par ordre alphabétique
